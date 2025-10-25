@@ -20,6 +20,13 @@ pipeline {
                 bat 'mvn clean compile'
             }
         }
+        stage ('Scan SonarQube') {
+            steps {
+                withSonarQubeEnv(installationName:'SonarQube'){
+                    bat 'mvn clean install sonar:sonar'
+                }
+            }
+        }
         stage ('Test') {
             steps {
                 bat 'mvn -Dmaven.test.failure.ignore=true clean install'
