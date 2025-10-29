@@ -8,13 +8,13 @@ pipeline {
         skipStagesAfterUnstable()
     }
     stages {
-        stage('Git Checkout') {
-            steps {
-                script {
-                    git branch: 'main', url: 'https://github.com/jessoussi/authentication-service/'
-                }
-            }
-        }
+        //stage('Git Checkout') {
+        //    steps {
+        //        script {
+        //            git branch: 'main', url: 'https://github.com/jessoussi/authentication-service/'
+        //        }
+        //    }
+        //}
         stage ('Build') {
             steps {
                 bat 'mvn clean compile'
