@@ -31,15 +31,10 @@ pipeline {
             steps {
                 bat 'mvn -Dmaven.test.failure.ignore=true clean install'
             }
-            // post {
-            //    success {
-            //        junit 'target/surefire-reports/**/*.xml'
-            //    }
-            //}
         }
         stage('Deploy') {
             steps {
-                echo "Deployment application"
+                echo "Deployment application à venir !!!"
             }
         }
     }
