@@ -1,5 +1,44 @@
+server:
+  port: 8080
+  shutdown: graceful
+
 spring:
   application:
     name: Authentication Service
-server:
-  port: 8080
+
+  jta:
+    enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    properties:
+      hibernate:
+      # format_sql: true
+      # show_sql: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+
+  lifecycle:
+    timeout-per-shutdown-phase: 10s
+
+  flyway:
+    baseline-on-migrate: true
+    baseline-version: 0
+    enabled: true
+
+  datasource:
+
+    hikari:
+      maximum-pool-size: 10
+      max-lifetime: 60000
+      connection-timeout: 10000
+      data-source-properties:
+        socketTimeout: 15
+        idle_in_transaction_session_timeout: 80000
+
+springdoc:
+  swagger-ui:
+    enabled: true
+    path: /swagger.html

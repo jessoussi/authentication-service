@@ -6,10 +6,10 @@
     <parent>
         <groupId>org.sample.devops</groupId>
         <artifactId>authentication-service</artifactId>
-        <version>0.0.3-SNAPSHOT</version>
+        <version>0.0.2-SNAPSHOT</version>
     </parent>
 
-    <artifactId>domain</artifactId>
+    <artifactId>infra</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -17,13 +17,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <version>3.5.6</version>
         </dependency>
-
     </dependencies>
+
 </project>

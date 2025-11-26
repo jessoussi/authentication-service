@@ -1,7 +1,5 @@
 package org.sample.devops.service.authentication.domain;
 
-import org.sample.devops.service.authentication.infra.User;
-import org.sample.devops.service.authentication.infra.UsersDB;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -9,14 +7,14 @@ import java.util.Optional;
 @Service
 public class AuthenticationService {
 
-    private final UsersDB userDB;
+    private final UserRepositoryPort userRepositoryPort;
 
-    public AuthenticationService(UsersDB userDB){
-        this.userDB = userDB;
+    public AuthenticationService(UserRepositoryPort userRepositoryPort){
+        this.userRepositoryPort = userRepositoryPort;
     }
 
     public Optional<User> authenticate(String mail, String password){
-        Optional<User> user = this.userDB.getUserByMail(mail);
+        Optional<User> user = this.userRepositoryPort.getUserByEmail(mail);
         if (user.isPresent()){
             if (user.get().getPassword().equals(password)){
                 return user;

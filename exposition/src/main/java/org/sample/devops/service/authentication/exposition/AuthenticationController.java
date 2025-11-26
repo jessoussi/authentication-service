@@ -1,6 +1,7 @@
 package org.sample.devops.service.authentication.exposition;
 
-import org.sample.devops.service.authentication.infra.User;
+import org.sample.devops.service.authentication.domain.User;
+import org.sample.devops.service.authentication.infra.UserEntity;
 import org.sample.devops.service.authentication.domain.AuthenticationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

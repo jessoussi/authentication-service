@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.sample.devops</groupId>
         <artifactId>authentication-service</artifactId>
-        <version>0.0.3-SNAPSHOT</version>
+        <version>0.0.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>domain</artifactId>
@@ -25,5 +25,10 @@
             <version>3.5.6</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.sample.devops</groupId>
+            <artifactId>infra</artifactId>
+            <version>0.0.2-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>

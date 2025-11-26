@@ -10,15 +10,15 @@ import java.util.Optional;
 @Component
 public class UsersDB {
 
-    private static final Map<String, User> db = new HashMap<>();
+    private static final Map<String, UserEntity> db = new HashMap<>();
 
     @PostConstruct
     private void initialize(){
-        db.put("user1@mail.com", new User("user1@mail.com", "User1FirstName", "User1LastName", "password1"));
-        db.put("user2@mail.com", new User("user2@mail.com", "User2FirstName", "User2LastName", "password2"));
+        db.put("user1@mail.com", new UserEntity("user1@mail.com", "User1FirstName", "User1LastName", "password1"));
+        db.put("user2@mail.com", new UserEntity("user2@mail.com", "User2FirstName", "User2LastName", "password2"));
     }
 
-    public Optional<User> getUserByMail(String mail){
+    public Optional<UserEntity> getUserByMail(String mail){
         return Optional.ofNullable(db.get(mail));
     }
 }
