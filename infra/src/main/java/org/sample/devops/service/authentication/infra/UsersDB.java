@@ -14,8 +14,8 @@ public class UsersDB {
 
     @PostConstruct
     private void initialize(){
-        db.put("user1@mail.com", new UserEntity("user1@mail.com", "User1FirstName", "User1LastName", "password1"));
-        db.put("user2@mail.com", new UserEntity("user2@mail.com", "User2FirstName", "User2LastName", "password2"));
+        db.put("user1@mail.com", new UserEntity("user1@mail.com", "User1FirstName", "User1LastName", "password1", "Paris"));
+        db.put("user2@mail.com", new UserEntity("user2@mail.com", "User2FirstName", "User2LastName", "password2", "Paris"));
     }
 
     public Optional<UserEntity> getUserByMail(String mail){

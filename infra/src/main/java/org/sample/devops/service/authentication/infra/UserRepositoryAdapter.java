@@ -21,7 +21,7 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
         Optional<UserEntity> userEntityOptional = this.userJpaRepository.findByMail(email);
         if (userEntityOptional.isPresent()){
             UserEntity userEntity = userEntityOptional.get();
-            User user =  new User(userEntity.getUid(), userEntity.getMail(), userEntity.getFirstname(), userEntity.getLastname(), userEntity.getPassword());
+            User user =  new User(userEntity.getUid(), userEntity.getMail(), userEntity.getFirstname(), userEntity.getLastname(), userEntity.getPassword(), userEntity.getVille());
             return Optional.of(user);
         }
         return Optional.empty();

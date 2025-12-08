@@ -7,16 +7,18 @@ public class User {
     private String firstname;
     private String lastname;
     private String password;
+    private String ville;
 
     public User() {
     }
 
-    public User(Long uid, String mail, String firstname, String lastname, String password) {
+    public User(Long uid, String mail, String firstname, String lastname, String password, String ville) {
         this.uid = uid;
         this.mail = mail;
         this.firstname = firstname;
         this.lastname = lastname;
         this.password = password;
+        this.ville = ville;
     }
 
     public Long getUid() {
@@ -53,5 +55,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getVille() {
+        return ville;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville;
     }
 }

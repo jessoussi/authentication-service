@@ -1,0 +1,1 @@
+UPDATE users set ville = 'Paris' where uid=123456789;

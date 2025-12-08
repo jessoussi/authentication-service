@@ -37,6 +37,6 @@ public class HttpRequestUnitTest {
         AuthenticationRequest request = new AuthenticationRequest("user1@mail.com", "password1");
         ResponseEntity<AuthenticationResponse> response = this.restTemplate.postForEntity(uri, request, AuthenticationResponse.class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(response.getBody()).isEqualTo(new AuthenticationResponse("user1@mail.com", "User1FirstName", "User1LastName"));
+        assertThat(response.getBody()).isEqualTo(new AuthenticationResponse("user1@mail.com", "User1FirstName", "User1LastName", "Paris"));
     }
 }

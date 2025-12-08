@@ -28,7 +28,7 @@ public class AuthenticationController {
         Optional<User> userOptional = authenticationService.authenticate(authenticationRequest.mail(), authenticationRequest.password());
         if (userOptional.isPresent()){
             User user = userOptional.get();
-            AuthenticationResponse authenticationResponse = new AuthenticationResponse(user.getMail(), user.getFirstname(), user.getLastname());
+            AuthenticationResponse authenticationResponse = new AuthenticationResponse(user.getMail(), user.getFirstname(), user.getLastname(), user.getVille());
             return ResponseEntity.ok(authenticationResponse);
         }else{
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

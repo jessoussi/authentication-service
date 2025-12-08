@@ -1,0 +1,1 @@
+ALTER TABLE users ADD ville VARCHAR(255);

@@ -13,15 +13,17 @@ public class UserEntity {
     private String firstname;
     private String lastname;
     private String password;
+    private String ville;
 
     public UserEntity() {
     }
 
-    public UserEntity(String mail, String firstname, String lastname, String password) {
+    public UserEntity(String mail, String firstname, String lastname, String password, String ville) {
         this.mail = mail;
         this.firstname = firstname;
         this.lastname = lastname;
         this.password = password;
+        this.ville = ville;
     }
 
     public Long getUid() {
@@ -42,5 +44,9 @@ public class UserEntity {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getVille() {
+        return ville;
     }
 }
