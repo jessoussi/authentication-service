@@ -29,7 +29,9 @@ spring:
     enabled: true
 
   datasource:
-
+    url: jdbc:postgresql://database:5432/authentication_service_db
+    username: postgres
+    password: password
     hikari:
       maximum-pool-size: 10
       max-lifetime: 60000

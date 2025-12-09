@@ -17,8 +17,33 @@ services:
     networks:
       - app
 
+  # 2. SERVICE DE L'APPLICATION SPRING BOOT
+  app:
+    build:
+      # Indique à Docker Compose de construire l'image à partir du Dockerfile dans le répertoire actuel
+      context: .
+      dockerfile: Dockerfile
+    container_name: authentication_service_app
+    ports:
+      # Mapper le port 8080 du conteneur au port 8080 de l'hôte
+      - "8080:8080"
+    environment:
+      # Configuration de la connexion à la base de données pour Spring Boot
+      # ATTENTION : Utilisez le nom du service 'db' comme hostname !
+      SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/authentication_service_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: password
+      # Autres paramètres Spring (ex: DDL auto)
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    depends_on:
+      # Assure que le service 'db' démarre avant le service 'app'
+      - database
+    # Assure que l'application tente de redémarrer si elle plante
+    restart: on-failure
+    networks:
+      - app
+
 volumes:
   local_pgdata:
-  pgadmin-data:
 networks:
   app:
