@@ -3,7 +3,7 @@ version: "3.1"
 services:
   database:
     hostname: authentication_service_pgdb_host
-    container_name: authentication_service_pgdb
+    #container_name: authentication_service_pgdb
     image: postgres
     restart: always
     ports:
@@ -23,7 +23,7 @@ services:
       # Indique à Docker Compose de construire l'image à partir du Dockerfile dans le répertoire actuel
       context: .
       dockerfile: Dockerfile
-    container_name: authentication_service_app
+    #container_name: authentication_service_app
     ports:
       # Mapper le port 8080 du conteneur au port 8080 de l'hôte
       - "8080:8080"
