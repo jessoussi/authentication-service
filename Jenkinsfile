@@ -35,6 +35,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo "Deployment de l'application dans docker!!!"
+                echo "Arrêter les services ..."
+                bat 'docker compose down -v'
+                echo "Lancement des services ..."
                 bat 'docker compose up --build -d'
             }
         }
