@@ -38,7 +38,7 @@ pipeline {
                 echo "Arrêter les services ..."
                 bat 'docker compose -f docker-compose.yml down --rmi local -v'
                 echo "Lancement des services ..."
-                bat 'docker compose -f docker-compose.yml up --build -d'
+                bat 'docker compose -f docker-compose.yml up --build -d --force-recreate'
             }
         }
     }
