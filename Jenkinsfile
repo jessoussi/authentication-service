@@ -36,7 +36,7 @@ pipeline {
             steps {
                 echo "Deployment de l'application dans docker!!!"
                 echo "Arrêter les services ..."
-                bat 'docker compose down -v'
+                bat 'docker compose down --rmi local -v'
                 echo "Lancement des services ..."
                 bat 'docker compose up --build -d'
             }
