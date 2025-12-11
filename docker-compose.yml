@@ -1,11 +1,14 @@
 version: "3.1"
 
 services:
+  # 2. SERVICE DE BASE DE DONNEES
   database:
-    hostname: authentication_service_pgdb_host
-    container_name: authentication_service_pgdb
+    #hostname: authentication_service_pgdb_host
+    #container_name: authentication_service_pgdb
     image: postgres
-    restart: always
+    deploy:
+      restart_policy:
+        condition: on-failure
     ports:
       - "5433:5432"
     environment:
@@ -13,33 +16,35 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: authentication_service_db
     volumes:
-      - local_pgdata:/var/lib/postgresql/data
+      - local_pgdata:/var/lib/postgresql
     networks:
       - app
 
   # 2. SERVICE DE L'APPLICATION SPRING BOOT
   app:
+    image: img/authentication-service-app:latest
     build:
       # Indique à Docker Compose de construire l'image à partir du Dockerfile dans le répertoire actuel
       context: .
       dockerfile: Dockerfile
-    container_name: authentication_service_app
+    deploy:
+      # Si vous souhaitez 3 instances de l'application :
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+    #container_name: authentication_service_app
     ports:
       # Mapper le port 8080 du conteneur au port 8080 de l'hôte
       - "8080:8080"
     environment:
       # Configuration de la connexion à la base de données pour Spring Boot
-      # ATTENTION : Utilisez le nom du service 'db' comme hostname !
+      # ATTENTION : Utilisez le nom du service 'database' comme hostname !
       SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/authentication_service_db
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: password
       # Autres paramètres Spring (ex: DDL auto)
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
-    depends_on:
-      # Assure que le service 'db' démarre avant le service 'app'
-      - database
     # Assure que l'application tente de redémarrer si elle plante
-    restart: on-failure
     networks:
       - app
 

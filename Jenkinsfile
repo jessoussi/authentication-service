@@ -36,9 +36,11 @@ pipeline {
             steps {
                 echo "Deployment de l'application dans docker!!!"
                 echo "Arrêter les services ..."
-                bat 'docker compose -f docker-compose.yml down --rmi local -v'
+                bat 'docker stack rm auth-stack'
+                echo "Builder l'application ..."
+                bat 'docker compose build app'
                 echo "Lancement des services ..."
-                bat 'docker compose -f docker-compose.yml up --build -d --force-recreate'
+                bat 'docker stack deploy -c docker-compose.yml auth-stack'
             }
         }
     }
